@@ -29,6 +29,12 @@
 				controller: 'LoginController'
 				
 			}).
+			when('/addblog', {
+				templateUrl: 'view/blogRegisterForm.html',
+				controller: 'BlogController'
+				
+			}).
+			
 	      otherwise({
 			redirectTo: '/'
 	      });
