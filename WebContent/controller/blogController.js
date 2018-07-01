@@ -1,4 +1,5 @@
-app.controller('BlogController',function($scope,$location,$rootScope,BlogService) {
+app.controller('BlogController',function($scope,$location,$rootScope,BlogService,$routeParams) {
+	var id=$routeParams.id
 	$scope.addBlog=function() {
 		BlogService.addBlog($scope.post).then(
 				function(response) {
@@ -11,5 +12,29 @@ app.controller('BlogController',function($scope,$location,$rootScope,BlogService
 						$location.path('/login')
 				})
 	}
+	
+	
+	if($rootScope.loggedInUser.role=='ROLE_ADMIN') {
+		BlogService.getBlogsWaitingForApproval()
+		.then(
+				function(response) {
+					$scope.blogsWaitingForApproval=response.data
+				},function(response) {
+					$rootScope.error=response.data
+					if(response.status==401)
+						$location.path('/login')
+				})
+	}		
+		
+	 BlogService.getBlog(id).then(
+			 function(response) {
+				 $scope.blog=response.data
+				 $scope.content=$sce.trustAsHtml($scope.blog.blogContent)
+			 },function(response) {
+				 $rootScope.error=response.data
+				 if(response.status==401)
+					 $location.path('/login')
+			 })
+	
 
 });

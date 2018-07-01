@@ -89,7 +89,7 @@
 data-toggle="dropdown" ng-show="loggedInUser.firstName!=undefined">Blog<b class="caret"></b></a>
 <ul class="dropdown-menu">
 <li><a href="#/addblog">Add Blog</a></li>
-<li><a href="#/blogsnotapproved" ng-show="loggedInUser.role=='ADMIN'">Blogs waiting for approval</a></li>
+<li><a href="#/blogsnotapproved" ng-show="loggedInUser.role=='ROLE_ADMIN'">Blogs waiting for approval</a></li>
 <li><a href="#/blogsapproved">Blogs</a></li>
 </ul></li>
 <li><a href="#/uploadprofilepic" ng-show="loggedInUser.firstName!=undefined">

@@ -34,6 +34,14 @@
 				controller: 'BlogController'
 				
 			}).
+			when('/blogsnotapproved', {
+				templateUrl: 'view/viewPendingpost.html',
+				controller: 'BlogController'
+			}).
+			when('/getblog/:id',{
+				templateUrl:'view/blogdetails.html',
+				controller:'BlogController'
+			})
 			
 	      otherwise({
 			redirectTo: '/'
