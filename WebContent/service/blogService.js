@@ -5,9 +5,9 @@ app.factory('BlogService',function($http)
     var blogService={}
     
     blogService.addBlog = addBlog;
-    blogService.getBlogsWaitingForApproval=getBlogsWaitingForApproval
+    blogService.getBlogsWaitingForApproval=getBlogsWaitingForApproval;
     
-    blogService.getBlog=getBlog
+    blogService.getBlogbyID=getBlogbyID;
   
     
 //RegisterService.blogpost{}
@@ -26,8 +26,9 @@ app.factory('BlogService',function($http)
     	console.loging("pending blog service fetched")
     	
     }
-    function getBlog(id)
+    function getBlogbyID(id)
 {
+    	console.log("fetching blog records based on id")
     	return $http.get(BASE_URL+'/viewPostById/'+'id')
 } 
 

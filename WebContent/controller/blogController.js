@@ -16,8 +16,7 @@ app.controller('BlogController',function($scope,$location,$rootScope,BlogService
 	
 	if($rootScope.loggedInUser.role=='ROLE_ADMIN') {
 		BlogService.getBlogsWaitingForApproval()
-		.then(
-				function(response) {
+		.then(function(response) {
 					$scope.blogsWaitingForApproval=response.data
 				},function(response) {
 					$rootScope.error=response.data
@@ -25,9 +24,9 @@ app.controller('BlogController',function($scope,$location,$rootScope,BlogService
 						$location.path('/login')
 				})
 	}		
-		
-	 BlogService.getBlog(id).then(
-			 function(response) {
+	if($rootScope.loggedInUser.role=='ROLE_ADMIN') {	
+	 BlogService.getBlogbyID(id)
+	 .then(function(response) {
 				 $scope.blog=response.data
 				 $scope.content=$sce.trustAsHtml($scope.blog.blogContent)
 			 },function(response) {
@@ -35,6 +34,6 @@ app.controller('BlogController',function($scope,$location,$rootScope,BlogService
 				 if(response.status==401)
 					 $location.path('/login')
 			 })
-	
+	}
 
 });

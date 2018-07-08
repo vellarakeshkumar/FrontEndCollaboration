@@ -1,4 +1,4 @@
- var app=angular.module('myApp', ['ngRoute','ngCookies'])
+  var app=angular.module('myApp',['ngRoute','ngCookies']);
 
  app.config(['$routeProvider', function($routeProvider) {
 	    $routeProvider.
@@ -38,10 +38,10 @@
 				templateUrl: 'view/viewPendingpost.html',
 				controller: 'BlogController'
 			}).
-			when('/getblog/:id',{
-				templateUrl:'view/blogdetails.html',
+			when('/getBlogForApproval/:id',{
+				templateUrl:'view/individualblogDetails.html',
 				controller:'BlogController'
-			})
+			}).
 			
 	      otherwise({
 			redirectTo: '/'
