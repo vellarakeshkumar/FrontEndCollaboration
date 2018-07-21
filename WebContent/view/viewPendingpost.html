@@ -3,7 +3,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body data-ng-controller='BlogController'>
+<body>
 <div class="container" align="justify">
 		<div class="row vertical-offset-100">
 		    <div class="col-md-8 col-md-offset-14">
@@ -20,7 +20,7 @@ List of Blog Posts waiting for approval
 
 <td><a href="#getBlogForApproval/{{blogPost.id}}">{{blogPost.blogTitle}}</a></td>
 <td>Created By:{{blogPost.postedBy.firstName}}&nbsp;{{blogPost.postedBy.lastName}}</td>
-<td>Created on: {{blogPost.postedBy | date:'MM/dd/yyyy HH:mm'}}</td>
+<td>Created on: {{blogPost.createdDate | date:'MM/dd/yyyy HH:mm'}}</td>
 </tr>
 </table>
 </div>
